@@ -18,8 +18,7 @@ public class RagnarsRok extends BasicGame
 
     @Override
     public void update(GameContainer gc, int i) throws SlickException {
-        if (gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
-        }
+        //Get input - TODO: 2015-12-02
     }
 
     @Override
