@@ -10,7 +10,8 @@ Varje hackday har ett specifikt tema. Temat är alltid kopplat till teknik som h
 `Två hackdays per termin är målet och syftet är att nörda, kötta, programmera - hårdvara, mjukvara, webb, linux, devops, IoT, ja allt som finns! Och med detta ska vi skapa och ha kul!!!!`
 
 
-För mer info och material kring ett specifikt event - se det här repots Wiki!
+#För mer info och material kring ett specifikt event - se det här repots Wiki!#  
+<a href="https://github.com/dite-bth/hackday/wiki">Wikin finns här</a>
 
 
 
