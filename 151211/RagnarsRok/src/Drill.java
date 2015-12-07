@@ -19,16 +19,18 @@ public class Drill {
 
     private ArrayList drill;
 
-    private int x;
-    private int y;
+    private int x = 50;
+    private int y = 100;
     private  int direction;
 
     public Drill(int direction){
 
         //Initialize drill
         try {
-            drillTipSprite = new SpriteSheet("drill_part.png", 32, 32);
-            drillSprite = new SpriteSheet("drill_tip.png", 32, 32);
+            drillTipSprite = new SpriteSheet("drill_tip.png", 32, 32);
+            drillSprite = new SpriteSheet("drill_part.png", 32, 32);
+
+            this.direction = direction;
 
             drillTipAnimation = new Animation(drillTipSprite, 10);
             drillAnimation = new Animation(drillSprite, 10);
@@ -37,9 +39,6 @@ public class Drill {
             drill.add(drillTipAnimation);
             drill.add(drillAnimation);
 
-            x = 50;
-            y = 100;
-            this.direction = direction;
 
         }catch(SlickException e){
             e.printStackTrace();
@@ -48,22 +47,25 @@ public class Drill {
 
     public void drawDrill(Graphics g){
         int offset = 0;
-        for(int i = 0; i < drill.size(); i++){
+        for(int i = drill.size()-1; i >=0 ; i--){
             if(direction == GameStatics.PLAYER_ORIENTATION_N) {
                 g.drawAnimation((Animation)drill.get(i), x, y + offset);
-                offset += 32;
+                offset += drillAnimation.getHeight();
             }
             else if(direction == GameStatics.PLAYER_ORIENTATION_S) {
+                ((Animation)drill.get(i)).getCurrentFrame().setRotation(180);
                 g.drawAnimation((Animation)drill.get(i), x, y + offset);
-                offset -= 32;
+                offset -= drillAnimation.getHeight();
             }
             else if(direction == GameStatics.PLAYER_ORIENTATION_E) {
+                ((Animation)drill.get(i)).getCurrentFrame().setRotation(270);
                 g.drawAnimation((Animation)drill.get(i), x + offset, y);
-                offset += 32;
+                offset += drillAnimation.getWidth();
             }
             else if(direction == GameStatics.PLAYER_ORIENTATION_W) {
+                ((Animation)drill.get(i)).getCurrentFrame().setRotation(90);
                 g.drawAnimation((Animation)drill.get(i), x + offset, y);
-                offset -= 32;
+                offset -= drillAnimation.getWidth();
             }
             else
             {
@@ -73,51 +75,61 @@ public class Drill {
     }
 
     public void drillDown(){
-        if(direction == GameStatics.PLAYER_ORIENTATION_N) {
-            y += 32;
+        if (drill.size() < 16) {
+            drill.add(drillAnimation);
         }
-        else if(direction == GameStatics.PLAYER_ORIENTATION_S) {
-            y -= 32 ;
-        }
-        else if(direction == GameStatics.PLAYER_ORIENTATION_E) {
-            x += 32;
-        }
-        else if(direction == GameStatics.PLAYER_ORIENTATION_W) {
-            x-= 32;
-        }
-        else
-        {
-            System.out.println("It's not right! It's wrong!");
-        }
-        drill.add(drillAnimation);
     }
 
-    public void drillUp(){
-        if(direction == GameStatics.PLAYER_ORIENTATION_N) {
-            y -= 32;
+    public void drillUp() {
+        if (drill.size() > 2) {
+            drill.remove(drill.size() - 1);
         }
-        else if(direction == GameStatics.PLAYER_ORIENTATION_S) {
-            y += 32 ;
-        }
-        else if(direction == GameStatics.PLAYER_ORIENTATION_E) {
-            x -= 32;
-        }
-        else if(direction == GameStatics.PLAYER_ORIENTATION_W) {
-            x += 32;
-        }
-        else
-        {
-            System.out.println("It's not right! It's wrong!");
-        }
-        drill.remove(drill.size() -1);
     }
 
     public void drillLeft(){
+        if(drill.size() > 2) {
+            return;
+        }
 
+        if(direction == GameStatics.PLAYER_ORIENTATION_N) {
+            x -= drillAnimation.getWidth();
+        }
+        else if(direction == GameStatics.PLAYER_ORIENTATION_S) {
+            x += drillAnimation.getWidth();
+        }
+        else if(direction == GameStatics.PLAYER_ORIENTATION_E) {
+            y -= drillAnimation.getHeight();
+        }
+        else if(direction == GameStatics.PLAYER_ORIENTATION_W) {
+            y += drillAnimation.getHeight();
+        }
+        else
+        {
+            System.out.println("It's not right! It's wrong!");
+        }
     }
 
     public void drillRight(){
+        if(drill.size() > 2) {
+            return;
+        }
 
+        if(direction == GameStatics.PLAYER_ORIENTATION_N) {
+            x += drillAnimation.getWidth();
+        }
+        else if(direction == GameStatics.PLAYER_ORIENTATION_S) {
+            x -= drillAnimation.getWidth();
+        }
+        else if(direction == GameStatics.PLAYER_ORIENTATION_E) {
+            y += drillAnimation.getHeight();
+        }
+        else if(direction == GameStatics.PLAYER_ORIENTATION_W) {
+            y -= drillAnimation.getHeight();
+        }
+        else
+        {
+            System.out.println("It's not right! It's wrong!");
+        }
     }
 }
 

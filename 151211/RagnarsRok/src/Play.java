@@ -18,20 +18,32 @@ public class Play extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg)
             throws SlickException {
         world = new World();
-        drill = new Drill(GameStatics.PLAYER_ORIENTATION_N);
+        drill = new Drill(GameStatics.PLAYER_ORIENTATION_W);
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
         if(sbg.getCurrentState().getID() == 1){
-            world.drawWorld(220, 220, g);
-            world.animateWorld(220, 220, g);
+            world.drawWorld(gc.getWidth()/2, gc.getHeight()/2, g);
+            world.animateWorld(gc.getWidth()/2, gc.getHeight()/2, g);
             drill.drawDrill(g);
         }
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta)
             throws SlickException {
+        if(gc.getInput().isKeyPressed(Input.KEY_S)){
+            drill.drillDown();
+        }
+        else if(gc.getInput().isKeyPressed(Input.KEY_W)){
+            drill.drillUp();
+        }
+        else if(gc.getInput().isKeyPressed(Input.KEY_D)){
+            drill.drillRight();
+        }
+        else if(gc.getInput().isKeyPressed(Input.KEY_A)){
+            drill.drillLeft();
+        }
     }
 
     public int getID() {

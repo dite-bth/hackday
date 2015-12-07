@@ -66,29 +66,38 @@ public class World {
             ironAnimation = new Animation(ironSprite, 100);
             ironAnimation.setDuration(0,2000);
             ammoAnimation = new Animation(ammoSprite, 100);
-            ammoAnimation.setDuration(0,2000);
+            ammoAnimation.setDuration(0,3000);
             shieldAnimation = new Animation(shieldSprite, 100);
-            shieldAnimation.setDuration(0,2000);
+            shieldAnimation.setDuration(0,4000);
         }catch(SlickException e){
             e.printStackTrace();
         }
     }
 
     public void drawWorld(int startX, int startY, Graphics g) {
+        int offset = 96;
         for(int i=0; i<resources.length; i++) {
             for (int j = 0; j <resources[i].length; j++) {
                 if (getAnimationAt(i, j) != null) {
-                    g.drawImage(getAnimationAt(i, j).getImage(0), (startX + 32 * i), (startY + 32 * j));
+                    g.drawImage(getAnimationAt(i, j).getImage(0), (startX + offset - planetAnimation.getWidth()/2 +
+                            getAnimationAt(i,j).getWidth() * i), (startY + offset - planetAnimation.getHeight()/2 +
+                            getAnimationAt(i,j).getHeight() * j));
                 }
             }
         }
     }
 
     public void animateWorld(int startX, int startY, Graphics g){
+        int offset = 96;
+        //Draw planet
+        g.drawAnimation(planetAnimation, startX - planetAnimation.getWidth()/2, startY - planetAnimation.getHeight()/2);
+        //Draw resources
         for(int i=0; i<resources.length; i++) {
             for (int j = 0; j <resources[i].length; j++) {
                 if (getAnimationAt(i, j) != null) {
-                  g.drawAnimation(getAnimationAt(i, j), (startX + 32 * i), (startY + 32 * j));
+                  g.drawAnimation(getAnimationAt(i, j), (startX + offset - planetAnimation.getWidth()/2 +
+                          getAnimationAt(i,j).getWidth() * i), (startY + offset  - planetAnimation.getHeight()/2 +
+                          getAnimationAt(i,j).getHeight() * j));
                 }
             }
         }
