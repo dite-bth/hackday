@@ -2,7 +2,11 @@
  * Created by Linus on 2015-12-07.
  */
 import org.newdawn.slick.*;
+import org.newdawn.slick.openal.Audio;
+import org.newdawn.slick.openal.AudioLoader;
+import org.newdawn.slick.util.ResourceLoader;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,12 +21,17 @@ public class Drill {
     private Animation drillTipAnimation;
     private Animation drillAnimation;
 
+    /** Sounds **/
+    private Audio wawWallHit;
+    private Audio wawDrillDown;
+
     private ArrayList drill;
 
     private int x;
     private int y;
     private int position;
     private  int direction;
+
 
     public Drill(int direction, int x, int y){
 
@@ -44,8 +53,14 @@ public class Drill {
             drill.add(drillTipAnimation);
             drill.add(drillAnimation);
 
+            wawWallHit = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("/sfx/drill_wall_hit.wav"));
+            wawDrillDown = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("/sfx/drilldown.wav"));
+
+
 
         }catch(SlickException e){
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -81,6 +96,7 @@ public class Drill {
 
     public void drillDown(){
         if (drill.size() < 12) {
+            wawDrillDown.playAsSoundEffect(1f, 1f, false);
             drill.add(drillAnimation);
         }
     }
@@ -93,6 +109,7 @@ public class Drill {
 
     public void drillLeft(){
         if(drill.size() > 2 || position == 1) {
+            wawWallHit.playAsSoundEffect(1f, 1f, false);
             return;
         }
         position --;
@@ -117,6 +134,7 @@ public class Drill {
 
     public void drillRight(){
         if(drill.size() > 2 || position == 12) {
+            wawWallHit.playAsSoundEffect(1f, 1f, false);
             return;
         }
         position ++;

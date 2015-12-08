@@ -2,7 +2,11 @@
  * Created by Linus on 2015-12-08.
  */
 import org.newdawn.slick.*;
+import org.newdawn.slick.openal.Audio;
+import org.newdawn.slick.openal.AudioLoader;
+import org.newdawn.slick.util.ResourceLoader;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,6 +26,10 @@ public class City {
     private Animation cityAnimation;
     private Animation cityShieldAnimation;
 
+    /** Sounds **/
+    private Audio wawActivateShield;
+
+
     public City(int direction){
 
         //Initialize city
@@ -30,13 +38,18 @@ public class City {
         try {
             citySprite = new SpriteSheet("/img/city.png", 128, 256);
             cityAnimation = new Animation(citySprite, 1);
+
+            wawActivateShield = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("/sfx/activate_shield.wav"));
         }catch(SlickException e){
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void activateCityShield(long time){
         if(!shieldActive){
+            wawActivateShield.playAsSoundEffect(1f, 1f, false);
             shieldActivationTime = time;
             shieldActive = true;
         }
