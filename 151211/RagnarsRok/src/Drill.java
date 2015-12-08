@@ -19,16 +19,19 @@ public class Drill {
 
     private ArrayList drill;
 
-    private int x = 50;
-    private int y = 100;
+    private int x;
+    private int y;
     private  int direction;
 
-    public Drill(int direction){
+    public Drill(int direction, int x, int y){
 
         //Initialize drill
+        this.x = x;
+        this.y = y;
+
         try {
-            drillTipSprite = new SpriteSheet("drill_tip.png", 32, 32);
-            drillSprite = new SpriteSheet("drill_part.png", 32, 32);
+            drillTipSprite = new SpriteSheet("/img/drill_tip.png", 32, 32);
+            drillSprite = new SpriteSheet("/img/drill_part.png", 32, 32);
 
             this.direction = direction;
 
@@ -75,7 +78,7 @@ public class Drill {
     }
 
     public void drillDown(){
-        if (drill.size() < 16) {
+        if (drill.size() < 12) {
             drill.add(drillAnimation);
         }
     }

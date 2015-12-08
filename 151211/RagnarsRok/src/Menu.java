@@ -44,7 +44,7 @@ public class Menu extends BasicGameState {
         headlineFont.loadGlyphs();
         menuFont.loadGlyphs();
         try{
-            oggStream = AudioLoader.getStreamingAudio("OGG", ResourceLoader.getResource("rodney_balai_-_funkamatic.ogg"));
+            oggStream = AudioLoader.getStreamingAudio("OGG", ResourceLoader.getResource("/sfx/rodney_balai_-_funkamatic.ogg"));
             oggStream.playAsMusic(1.0f, 1.0f, true);
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,9 +101,7 @@ public class Menu extends BasicGameState {
         }
         else if(menuItemChoosen == 0 && (gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isKeyPressed(Input.KEY_ENTER))){
             sbg.enterState(play);
-            oggStream.stop();
         }
-
         SoundStore.get().poll(0);
     }
 

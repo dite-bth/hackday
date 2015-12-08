@@ -19,7 +19,6 @@ public class World {
     private SpriteSheet shieldSprite;
 
     /** Animations **/
-    private Animation cityAnimation;
     private Animation planetAnimation;
     private Animation ironAnimation;
     private Animation ammoAnimation;
@@ -55,20 +54,19 @@ public class World {
 
         //Initialize animations
         try {
-            citySprite = new SpriteSheet("city.png", 128, 256);
-            planetSprite = new SpriteSheet("planet.png", 832, 832);
-            ironSprite = new SpriteSheet("iron.png", 32, 32);
-            ammoSprite = new SpriteSheet("ammo.png", 32, 32);
-            shieldSprite = new SpriteSheet("shield.png", 32, 32);
 
-            cityAnimation = new Animation(citySprite, 1);
+            planetSprite = new SpriteSheet("/img/planet.png", 828, 828);
+            ironSprite = new SpriteSheet("/img/iron.png", 32, 32);
+            ammoSprite = new SpriteSheet("/img/ammo.png", 32, 32);
+            shieldSprite = new SpriteSheet("/img/shield.png", 32, 32);
+
             planetAnimation = new Animation(planetSprite,1);
             ironAnimation = new Animation(ironSprite, 100);
-            ironAnimation.setDuration(0,2000);
+            ironAnimation.setDuration(0,4000);
             ammoAnimation = new Animation(ammoSprite, 100);
-            ammoAnimation.setDuration(0,3000);
+            ammoAnimation.setDuration(0,6000);
             shieldAnimation = new Animation(shieldSprite, 100);
-            shieldAnimation.setDuration(0,4000);
+            shieldAnimation.setDuration(0,8000);
         }catch(SlickException e){
             e.printStackTrace();
         }
