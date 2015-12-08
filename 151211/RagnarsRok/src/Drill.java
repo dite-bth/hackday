@@ -21,11 +21,13 @@ public class Drill {
 
     private int x;
     private int y;
+    private int position;
     private  int direction;
 
     public Drill(int direction, int x, int y){
 
         //Initialize drill
+        position = 6;
         this.x = x;
         this.y = y;
 
@@ -90,9 +92,10 @@ public class Drill {
     }
 
     public void drillLeft(){
-        if(drill.size() > 2) {
+        if(drill.size() > 2 || position == 1) {
             return;
         }
+        position --;
 
         if(direction == GameStatics.PLAYER_ORIENTATION_N) {
             x -= drillAnimation.getWidth();
@@ -113,9 +116,10 @@ public class Drill {
     }
 
     public void drillRight(){
-        if(drill.size() > 2) {
+        if(drill.size() > 2 || position == 12) {
             return;
         }
+        position ++;
 
         if(direction == GameStatics.PLAYER_ORIENTATION_N) {
             x += drillAnimation.getWidth();
