@@ -2,8 +2,12 @@
  * Created by Linus on 2015-12-02.
  */
 import org.newdawn.slick.*;
+import org.newdawn.slick.openal.Audio;
+import org.newdawn.slick.openal.AudioLoader;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.ResourceLoader;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class World {
@@ -15,8 +19,11 @@ public class World {
     private SpriteSheet planetSprite;
 
 
-        /** Animations **/
+    /** Animations **/
     private Animation planetAnimation;
+
+    /** Sound **/
+    private Audio wawHarvestResource;
 
     private Resource[][] resources;
 
@@ -162,11 +169,15 @@ public class World {
             }
         }
 
-        //Initialize animations
+        //Initialize animations and sound
         try {
             planetSprite = new SpriteSheet("/img/planet.png", 828, 828);
             planetAnimation = new Animation(planetSprite,1);
+
+            wawHarvestResource = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("/sfx/harvest_resource.wav"));
          }catch(SlickException e){
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -225,7 +236,12 @@ public class World {
     }
 
     public int harvestResourceAt (int x, int y){
-        return resources[x][y].harvestResource();
+        int harvest = resources[x][y].harvestResource();
+        if(harvest == GameStatics.RESOURCE_AMMO || harvest == GameStatics.RESOURCE_REPAIR ||
+                harvest == GameStatics.RESOURCE_SHIELD){
+            wawHarvestResource.playAsSoundEffect(1f,1f,false);
+        }
+        return harvest;
     }
 
     public Animation getAnimationAt (int x, int y){

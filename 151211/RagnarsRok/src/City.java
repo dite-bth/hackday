@@ -26,7 +26,7 @@ public class City {
     private Animation cityAnimation;
     private Animation cityShieldAnimation;
 
-    /** Sounds **/
+    /** Sound **/
     private Audio wawActivateShield;
 
 

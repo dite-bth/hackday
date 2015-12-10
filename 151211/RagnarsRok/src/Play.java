@@ -20,7 +20,7 @@ public class Play extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg)
             throws SlickException {
         world = new World();
-        drill = new Drill(GameStatics.PLAYER_ORIENTATION_N, gc.getWidth()/2-32, 214);
+        drill = new Drill(GameStatics.PLAYER_ORIENTATION_W);
         city1 = new City(GameStatics.PLAYER_ORIENTATION_N);
         city2 = new City(GameStatics.PLAYER_ORIENTATION_S);
         city3 = new City(GameStatics.PLAYER_ORIENTATION_E);
@@ -31,7 +31,7 @@ public class Play extends BasicGameState {
             throws SlickException {
         if(sbg.getCurrentState().getID() == 1){
             world.animateWorld(gc.getWidth()/2, gc.getHeight()/2, g);
-            drill.drawDrill(g);
+            drill.drawDrill(g, gc.getWidth()/2, gc.getHeight()/2);
             city1.animateCity(gc, g, gc.getTime());
             city2.animateCity(gc, g, gc.getTime());
             city3.animateCity(gc, g, gc.getTime());
