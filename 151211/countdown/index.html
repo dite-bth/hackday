@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html>
+<head>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.flipcountdown.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.flipcountdown.css" />
+<style type="text/css">
+body {background-color:black; color:white;}
+</style>
+</head>
+<body>
+<h1>COUNTDOWN HACKDAY#1</h1>
+<div id="hackday"></div>
+<script>
+
+jQuery(function(){
+ jQuery('#hackday').flipcountdown({
+   showDays:false,
+  size:'lg',
+  beforeDateTime:'12/11/2015 16:00:01'
+ });
+});
+
+
+</script>
+</body>
+</html>
