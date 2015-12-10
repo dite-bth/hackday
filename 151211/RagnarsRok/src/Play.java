@@ -30,7 +30,6 @@ public class Play extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
         if(sbg.getCurrentState().getID() == 1){
-            world.drawWorld(gc.getWidth()/2, gc.getHeight()/2, g);
             world.animateWorld(gc.getWidth()/2, gc.getHeight()/2, g);
             drill.drawDrill(g);
             city1.animateCity(gc, g, gc.getTime());
@@ -43,7 +42,13 @@ public class Play extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta)
             throws SlickException {
         if(gc.getInput().isKeyPressed(Input.KEY_S)){
-            drill.drillDown();
+            if(world.getResourceAt(drill.getDrillPositionX(), drill.getDrillPositionY()) == -1) {
+                drill.drillDown();
+            }
+            else{
+                int harvest = world.harvestResourceAt(drill.getDrillPositionX(), drill.getDrillPositionY());
+                drill.drillDown();
+            }
         }
         else if(gc.getInput().isKeyPressed(Input.KEY_W)){
             drill.drillUp();
