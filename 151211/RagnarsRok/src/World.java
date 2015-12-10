@@ -44,13 +44,13 @@ public class World {
             }
             stoneType = rand.nextInt(2);
             final int randomType = rand.nextInt(100);
-            if (randomType > 15) {
+            if (randomType <= 8) {
                 resourceType = GameStatics.RESOURCE_AMMO;
             }
-            else if (randomType > 30) {
+            else if (randomType > 8 && randomType <= 16) {
                 resourceType = GameStatics.RESOURCE_SHIELD;
             }
-            else if (randomType > 55) {
+            else if (randomType > 16 && randomType <= 24) {
                 resourceType = GameStatics.RESOURCE_REPAIR;
             }
             else {
@@ -101,6 +101,11 @@ public class World {
                     resourceAnimation = new Animation(shieldSprite, 100);
                     resourceAnimation.setDuration(0,8000);
                 }
+                else if(resourceType == GameStatics.RESOURCE_STONE) {
+                    resourceAnimation = new Animation(stoneSprite,1);
+                    resourceAnimation.stop();
+                    resourceAnimation.setCurrentFrame(stoneType);
+                }
                 stoneAnimation = new Animation(stoneSprite,1);
                 stoneAnimation.stop();
                 stoneAnimation.setCurrentFrame(stoneType);
@@ -114,15 +119,6 @@ public class World {
             int harvest = resourceType;
             resourceType = -1;
             return harvest;
-        }
-
-        public Animation getResourceSprite(){
-            if(resourceVisible){
-                return resourceAnimation;
-            }
-            else{
-                return stoneAnimation;
-            }
         }
 
         public Animation getAnimation(){
@@ -175,6 +171,23 @@ public class World {
         }
     }
 
+    private boolean isResourceOpen(int x, int y){
+        boolean resourceOpen = false;
+        if(x == 0 || x == resources.length -1){
+            resourceOpen = true;
+        }
+        else if(resources[x-1][y].getResourceType() == -1 || resources[x+1][y].getResourceType() == -1){
+            resourceOpen = true;
+        }
+        else if(y == 0 || y == resources[x].length -1 ) {
+            resourceOpen = true;
+        }
+        else if(resources[x][y-1].getResourceType() == -1 || resources[x][y+1].getResourceType() == -1){
+            resourceOpen = true;
+        }
+        return resourceOpen;
+    }
+
     public void drawWorld(int startX, int startY, Graphics g) {
         int offset = 96;
         for(int i=0; i<resources.length; i++) {
@@ -195,6 +208,9 @@ public class World {
         //Draw resources
         for(int i=0; i<resources.length; i++) {
             for (int j = 0; j <resources[i].length; j++) {
+                if(isResourceOpen(i, j)){
+                    resources[i][j].setResourceVisible();
+                }
                 if (getAnimationAt(i, j) != null) {
                     g.drawAnimation(getAnimationAt(i, j), (startX + offset - planetAnimation.getWidth() / 2 +
                             getAnimationAt(i, j).getWidth() * i),(startY + offset - planetAnimation.getHeight() / 2 +

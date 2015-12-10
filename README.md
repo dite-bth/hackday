@@ -3,9 +3,11 @@
 **`HACKDAY`**    
 <br>
 <br>
-Repo med samlad info om <a href="http://hackdaymanifesto.com/">hackday</a>'s som genomförs på campus och utbildningen Webbutveckling!!!!!    
+Repo med samlad info om <a href="http://hackdaymanifesto.com/">hackday</a>'s som genomförs på campus och utbildningen Webbutveckling!  
+De mappar som finns i det här repot är namngivna utefter det datum respektive hackday anordnades. I dessa mappar finns material samt övriga resurser som använts vid respektive tillfälle.  
 
 
+**Mål & syfte**  
 `Målet är att arrangera två hackdays per termin. Syftet är att i en nörding inramning skapa och upptäcka med hjälp av programmering av och med hårdvara, mjukvara, webb, linux, devops, IoT, WoT, ja allt som finns! Och med detta följer naturligtvis att vi har kul!`  
 
 

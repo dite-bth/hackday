@@ -31,14 +31,14 @@ public class Drill {
 
     private int x;
     private int y;
-    private int position;
+    private int position[];
     private  int direction;
 
 
     public Drill(int direction, int x, int y){
 
         //Initialize drill
-        position = 6;
+        position = new int[]{9,0};
         this.x = x;
         this.y = y;
 
@@ -100,25 +100,35 @@ public class Drill {
         }
     }
 
+    public int getDrillPositionX(){
+        return position[0];
+    }
+
+    public int getDrillPositionY(){
+        return position[1];
+    }
+
     public void drillDown(){
         if (drill.size() < 12) {
             wawDrillDown.playAsSoundEffect(1f, 1f, false);
             drill.add(1, drillAnimation);
+            position[1]++;
         }
     }
 
     public void drillUp() {
         if (drill.size() > 2) {
             drill.remove(drill.size() - 2);
+            position[1] --;
         }
     }
 
     public void drillLeft(){
-        if(drill.size() > 2 || position == 1) {
+        if(drill.size() > 2 || position[0] == 1) {
             wawWallHit.playAsSoundEffect(1f, 1f, false);
             return;
         }
-        position --;
+        position[0] --;
 
         if(direction == GameStatics.PLAYER_ORIENTATION_N) {
             x -= drillAnimation.getWidth();
@@ -139,11 +149,11 @@ public class Drill {
     }
 
     public void drillRight(){
-        if(drill.size() > 2 || position == 12) {
+        if(drill.size() > 2 || position[0] == 16) {
             wawWallHit.playAsSoundEffect(1f, 1f, false);
             return;
         }
-        position ++;
+        position[0] ++;
         drillBaseAnimation.start();
 
         if(direction == GameStatics.PLAYER_ORIENTATION_N) {
