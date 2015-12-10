@@ -1,44 +1,41 @@
 /**
  * Created by Linus on 2015-12-02.
  */
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.state.*;
 
-public class RagnarsRok extends BasicGame
-{
-    public RagnarsRok(String gamename)
-    {
+public class RagnarsRok extends StateBasedGame{
+
+    public static final String gamename = "Ragnar(s)rök - or the end of the world";
+    public static final int menu = 0;
+    public static final int play = 1;
+    public static final int xSize = 1200;
+    public static final int ySize = 1200;
+
+    public RagnarsRok(String gamename){
         super(gamename);
     }
 
-    @Override
-    public void init(GameContainer gc) throws SlickException {}
+    public void initStatesList(GameContainer gc) throws SlickException{
+        this.addState(new Menu());
+        this.addState(new Play());
+        //this.getState(play).init(gc, this);
+        //this.getState(menu).init(gc, this);
 
-    @Override
-    public void update(GameContainer gc, int i) throws SlickException {
-        //Get input - TODO: 2015-12-02
+        //Start with the Menu state
+        this.enterState(menu);
     }
 
-    @Override
-    public void render(GameContainer gc, Graphics g) throws SlickException
-    {
-        g.drawString("SPACE!", 40, 140);
-    }
-
-    public static void main(String[] args)
-    {
-        try
-        {
-            AppGameContainer appgc;
-            appgc = new AppGameContainer(new RagnarsRok("Ragnar(s)rök - or the end of the World"));
-            appgc.setDisplayMode(1000, 1000, false);
+    public static void main(String[] args) {
+        AppGameContainer appgc;
+        try{
+            appgc = new AppGameContainer(new RagnarsRok(gamename));
+            appgc.setDisplayMode(xSize, ySize, false);
+            appgc.setTargetFrameRate(60);
             appgc.start();
-        }
-        catch (SlickException ex)
-        {
-            Logger.getLogger(RagnarsRok.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(SlickException e){
+            e.printStackTrace();
         }
     }
 }

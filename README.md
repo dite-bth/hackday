@@ -1,17 +1,25 @@
 
-
-**`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** `HACKDAY` **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** HACKDAY **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** *`HACKDAY`* **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** *`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** `HACKDAY` **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** HACKDAY **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`**  **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`** **`HACKDAY`**    
+#<=>  
+**`HACKDAY`**    
 <br>
 <br>
 Repo med samlad info om <a href="http://hackdaymanifesto.com/">hackday</a>'s som genomförs på campus och utbildningen Webbutveckling!!!!!    
 
-Varje hackday har ett specifikt tema. Temat är alltid kopplat till teknik som har med webbutveckling och digital infrastruktur att göra.    
 
-`Två hackdays per termin är målet och syftet är att nörda, kötta, programmera - hårdvara, mjukvara, webb, linux, devops, IoT, ja allt som finns! Och med detta ska vi skapa och ha kul!!!!`
+`Målet är att arrangera två hackdays per termin. Syftet är att i en nörding inramning skapa och upptäcka med hjälp av programmering av och med hårdvara, mjukvara, webb, linux, devops, IoT, WoT, ja allt som finns! Och med detta följer naturligtvis att vi har kul!`  
 
 
-#För mer info och material kring ett specifikt event - se det här repots Wiki!#  
-<a href="https://github.com/dite-bth/hackday/wiki">Wikin finns här</a>
+Varje hackday har ett specifikt tema. Temat är alltid kopplat till teknik som har med webbutveckling och digital infrastruktur att göra. Med tiden kommer företag i aktuella branscher att medverka.  
+
+<br>
+<br>
+
+Mapparna i det här repot är daterade efter datumet varje event hölls. I mapparna finns alltså specifikt material, källkod etc för just det eventet.
+
+
+
+
+**<a href="https://github.com/dite-bth/hackday/wiki">Läs mer om respektive hackday och dess material i Wikin.</a>**
 
 
 
