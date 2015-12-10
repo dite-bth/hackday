@@ -45,7 +45,7 @@ public class Play extends BasicGameState {
             if(world.getResourceAt(drill.getDrillPositionX(), drill.getDrillPositionY()) == -1) {
                 drill.drillDown();
             }
-            else{
+            else if(drill.canDrillDown()){
                 int harvest = world.harvestResourceAt(drill.getDrillPositionX(), drill.getDrillPositionY());
                 drill.drillDown();
             }

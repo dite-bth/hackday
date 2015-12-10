@@ -108,6 +108,15 @@ public class Drill {
         return position[1];
     }
 
+    public boolean canDrillDown(){
+        if(drill.size() < 11){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public void drillDown(){
         if (drill.size() < 12) {
             wawDrillDown.playAsSoundEffect(1f, 1f, false);
@@ -124,7 +133,7 @@ public class Drill {
     }
 
     public void drillLeft(){
-        if(drill.size() > 2 || position[0] == 1) {
+        if(drill.size() > 2 || position[0] == 4) {
             wawWallHit.playAsSoundEffect(1f, 1f, false);
             return;
         }
@@ -149,7 +158,7 @@ public class Drill {
     }
 
     public void drillRight(){
-        if(drill.size() > 2 || position[0] == 16) {
+        if(drill.size() > 2 || position[0] == 15) {
             wawWallHit.playAsSoundEffect(1f, 1f, false);
             return;
         }
