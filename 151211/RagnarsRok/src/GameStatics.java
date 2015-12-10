@@ -7,7 +7,7 @@ public class GameStatics {
     public static final int RESOURCE_AMMO = 1;
     public static final int RESOURCE_SHIELD = 2;
     public static final int RESOURCE_REPAIR = 3;
-    public static final int RESOURCE_EMPTY = 4;
+    public static final int RESOURCE_STONE = 4;
 
     /** Player statics **/
     public static final int PLAYER_ORIENTATION_N = 0;

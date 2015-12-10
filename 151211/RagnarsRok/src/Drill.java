@@ -16,10 +16,12 @@ public class Drill {
     /** Sprites **/
     private SpriteSheet drillTipSprite;
     private SpriteSheet drillSprite;
+    private SpriteSheet drillBaseSprite;
 
     /** Animations **/
     private Animation drillTipAnimation;
     private Animation drillAnimation;
+    private Animation drillBaseAnimation;
 
     /** Sounds **/
     private Audio wawWallHit;
@@ -43,15 +45,19 @@ public class Drill {
         try {
             drillTipSprite = new SpriteSheet("/img/drill_tip.png", 32, 32);
             drillSprite = new SpriteSheet("/img/drill_part.png", 32, 32);
+            drillBaseSprite = new SpriteSheet("/img/drill_base.png", 32, 32);
+
 
             this.direction = direction;
 
             drillTipAnimation = new Animation(drillTipSprite, 10);
             drillAnimation = new Animation(drillSprite, 10);
+            drillBaseAnimation = new Animation(drillBaseSprite,50);
+            drillBaseAnimation.setLooping(false);
 
             drill = new ArrayList<Animation>();
             drill.add(drillTipAnimation);
-            drill.add(drillAnimation);
+            drill.add(drillBaseAnimation);
 
             wawWallHit = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("/sfx/drill_wall_hit.wav"));
             wawDrillDown = AudioLoader.getAudio("WAV", ResourceLoader.getResourceAsStream("/sfx/drilldown.wav"));
@@ -97,13 +103,13 @@ public class Drill {
     public void drillDown(){
         if (drill.size() < 12) {
             wawDrillDown.playAsSoundEffect(1f, 1f, false);
-            drill.add(drillAnimation);
+            drill.add(1, drillAnimation);
         }
     }
 
     public void drillUp() {
         if (drill.size() > 2) {
-            drill.remove(drill.size() - 1);
+            drill.remove(drill.size() - 2);
         }
     }
 
@@ -138,6 +144,7 @@ public class Drill {
             return;
         }
         position ++;
+        drillBaseAnimation.start();
 
         if(direction == GameStatics.PLAYER_ORIENTATION_N) {
             x += drillAnimation.getWidth();
