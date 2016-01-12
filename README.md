@@ -1,5 +1,7 @@
 
 #<=>  
+
+[![Join the chat at https://gitter.im/dite-bth/hackday](https://badges.gitter.im/dite-bth/hackday.svg)](https://gitter.im/dite-bth/hackday?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 **`HACKDAY`**    
 <br>
 <br>
